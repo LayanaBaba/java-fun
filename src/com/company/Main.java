@@ -40,13 +40,13 @@ public class Main{
                 System.out.println("heads");
                 headNum=headNum+1;
                 flipNum=flipNum+1;
-        }else {
+            }else {
                 System.out.println("tails");
                 headNum=0;
                 flipNum=flipNum+1;
             }
         }
-            System.out.println("It took " +flipNum +" "+ pluralize("flip",flipNum) +" to flip "+ headNum+ " head in a row.");
+        System.out.println("It took " +flipNum +" flips to flip "+ headNum+ " head in a row.");
     }
 
     public static void clock(){
@@ -62,7 +62,7 @@ public class Main{
 
             while (second== LocalDateTime.now().getSecond()){
 
-             continue;
+                continue;
             }
             System.out.println(time);
         }
