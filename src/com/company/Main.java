@@ -2,9 +2,8 @@ package com.company;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
+
 
 public class Main{
     public static String pluralize(String string, int count){
@@ -40,7 +39,25 @@ public class Main{
         };
         int x[] = minAverage(weeklyMonthTemperatures);
         System.out.println(Arrays.toString(x));
+
+        Analyzing(weeklyMonthTemperatures);
+
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        String winner = tally(votes);
+        System.out.println(winner + " received the most votes!");
     }
+
+
 
     public static void roll(int n){
 
@@ -72,6 +89,58 @@ public class Main{
 
         }
     return false;
+    }
+
+    public static void Analyzing(int [][] weatherData){
+        Set <Integer> data= new HashSet<>();
+        int min=Integer.MAX_VALUE, max=Integer.MIN_VALUE;
+
+        for (int i=0; i<weatherData.length; i++){
+            for (int j = 0; j < weatherData[i].length; j++) {
+                data.add(weatherData[i][j]);
+
+                if (weatherData[i][j]<min){
+                    min= weatherData[i][j];
+                    System.out.println("Low: "+min);
+                }else if(weatherData[i][j]>max){
+                    max=weatherData[i][j];
+                    System.out.println("High: "+max);
+                }
+            }
+        }
+
+        int minTemp=min;
+        for (int i = min; i <= max; i++) {
+            if (!data.contains(i)){
+                System.out.println("Never saw temperature: "+minTemp);
+            }
+            minTemp++;
+        }
+    }
+
+    public static String tally(java.util.List<String> votes){
+        Map<String , Integer> name= new HashMap<>();
+        for (int i = 0; i < votes.size(); i++) {
+            name.put(votes.get(i),0);
+        }
+        int totalVotes=0, max=0;
+
+        for (int i = 0; i < votes.size() ; i++) {
+            totalVotes=name.get(votes.get(i));
+            name.put(votes.get(i), ++totalVotes);
+        }
+
+        String winner="";
+        Object[] arr = name.keySet().toArray();
+
+        for (int i = 0; i < name.size(); i++) {
+            if (name.get(arr[i])>max){
+                max= name.get(arr[i]);
+                winner=arr[i].toString();
+
+            }
+        }
+        return winner;
     }
 
     public static double calAverage(int [] arr){

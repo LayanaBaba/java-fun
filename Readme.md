@@ -15,3 +15,7 @@
 6- Calculating Averages
 
 7- Arrays of Arrays
+
+8- Analyzing Weather Data
+
+9- Tallying Election
