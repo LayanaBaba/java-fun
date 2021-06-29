@@ -66,12 +66,12 @@ public class Main{
         item = arr[i];
         for (int j= i+1; j < arr.length; j++){
             if (arr[j] == item){
-                return false;
+                return true;
             }
         }
 
         }
-    return true;
+    return false;
     }
 
     public static double calAverage(int [] arr){
